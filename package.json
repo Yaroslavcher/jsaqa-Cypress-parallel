@@ -1,20 +1,29 @@
 {
-  "name": "7-07-cypress2",
+  "name": "jsaqa-jenkins-ci_cd",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "cypress.config.js",
   "scripts": {
-    "test:reserve": "cypress run --record --key 3cdd9e5a-f4c2-491b-957c-701ea0940b91 --group reserve --ci-build-id 2 --spec 'cypress/e2e/reserve.cy.js'",
-    "test:login": "cypress run --record --key 3cdd9e5a-f4c2-491b-957c-701ea0940b91 --group login --ci-build-id 2 --spec 'cypress/e2e/login.cy.js'",
-    "test:parallel": "run-p -c test:login test:reserve"
+    "test:reserve": "cypress run --record --group reserve --spec 'cypress/e2e/reserve.cy.js'",
+    "test:reserve:chrome": "cypress run --record --group reserve --browser chrome --spec 'cypress/e2e/reserve.cy.js'",
+    "test:login:chrome": "cypress run --record --group login --browser chrome --spec 'cypress/e2e/login.cy.js'",
+    "test:login:firefox": "cypress run --record --group login --browser firefox --spec 'cypress/e2e/login.cy.js'",
+    "test:login:opera": "cypress run --record --group login --browser opera --spec 'cypress/e2e/login.cy.js'",
+    "test:parallel:chrome": "npm run test:reserve & npm run test:login:chrome",
+    "test:parallel:firefox": "npm run test:reserve & npm run test:login:firefox",
+    "test:parallel:opera": "npm run test:reserve & npm run test:login:opera",
+    
+    "test:parallelTwo": "npm run test:reserve:chrome & npm run test:login:firefox",
+    
+    "test:specOneApi": "cypress run --record --group one --spec 'cypress/e2e/spec1/api.cy.js'",
+    "test:specOneLogin": "cypress run --record --group two --spec 'cypress/e2e/spec1/login.cy.js'",
+    "test:specTwoHomepage": "cypress run --record --group three --spec 'cypress/e2e/spec2/homepage.cy.js'",
+    "test:specTwoReserve": "cypress run --record --group four --spec 'cypress/e2e/spec2/reserve.cy.js'",
+    "test:parallel3": "npm run test:specOneApi & npm run test:specOneLogin & npm run test:specTwoHomepage & npm run test:specTwoReserve"  
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "cypress": "^12.4.1"
-  },
   "devDependencies": {
-    "npm-run-all": "^4.1.5"
+    "cypress": "^12.13.0"
   }
 }
