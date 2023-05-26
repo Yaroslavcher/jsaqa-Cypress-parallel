@@ -1,0 +1,20 @@
+{
+  "name": "7-07-cypress2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:reserve": "cypress run --record --key 3cdd9e5a-f4c2-491b-957c-701ea0940b91 --group reserve --ci-build-id 2 --spec 'cypress/e2e/reserve.cy.js'",
+    "test:login": "cypress run --record --key 3cdd9e5a-f4c2-491b-957c-701ea0940b91 --group login --ci-build-id 2 --spec 'cypress/e2e/login.cy.js'",
+    "test:parallel": "run-p -c test:login test:reserve"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^12.4.1"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}
